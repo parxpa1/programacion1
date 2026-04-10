@@ -1,0 +1,169 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyMmZFtOqtbSdZwA7xridZQe",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/parxpa1/programacion1/blob/main/trabajo%2C%20semana%20santa\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 23,
+      "metadata": {
+        "id": "PFvQvyEM16zm"
+      },
+      "outputs": [],
+      "source": [
+        "def sumar_vectores(A, B):\n",
+        "  filas = len(A)\n",
+        "  columnas = len(A[0])\n",
+        "  if filas != len(B) or columnas != len(B[0]):\n",
+        "    return \"Error: Las matrices deben tener las mismas dimensiones para sumarse.\"\n",
+        "  else:\n",
+        "    try:\n",
+        "      resultado = []\n",
+        "      for i in range(filas):\n",
+        "        fila = []\n",
+        "        for j in range(columnas):\n",
+        "          fila.append(float(A[i][j]) + float(B[i][j]))\n",
+        "          resultado.append(fila)\n",
+        "      return resultado\n",
+        "    except ValueError:\n",
+        "      return \"Debe ingresar solo números.\""
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def procudto_punto(A, B):\n",
+        "  filas = len(A)\n",
+        "  columnas = len(A[0])\n",
+        "  if filas != len(B) or columnas != len(B[0]):\n",
+        "    return \"Error: Las matrices deben tener las mismas dimensiones para sumarse.\"\n",
+        "  else:\n",
+        "    try:\n",
+        "      resultado = []\n",
+        "      for i in range(filas):\n",
+        "        fila = []\n",
+        "        for j in range(columnas):\n",
+        "          fila.append(float(A[i][j]) * float(B[i][j]))\n",
+        "          resultado = sum(float(A[i]) * float(B[i]) for i in range(len(A)))\n",
+        "      return resultado\n",
+        "    except ValueError:\n",
+        "      return \"Debe ingresar solo números.\""
+      ],
+      "metadata": {
+        "id": "lGkp5Lkd8X8-"
+      },
+      "execution_count": 69,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def producto_cruz(A, B):\n",
+        "  filas = len(A)\n",
+        "  columnas = len(A[0])\n",
+        "  if filas != len(B) or filas !=3:\n",
+        "    return \"Error: Las matrices deben tener las mismas dimensiones para sumarse.\"\n",
+        "  else:\n",
+        "    try:\n",
+        "      resultado = []\n",
+        "      for i in range(filas):\n",
+        "        fila = []\n",
+        "        for j in range(columnas):\n",
+        "          ai, aj, ak = A[0], A[1], A[2]\n",
+        "          bi, bj, bk = B[0], B[1], B[2]\n",
+        "          resultado = float(A[1])*float(B[2]) - float(A[2])*float(B[1]), float(A[2])*float(B[0]) - float(A[0])*float(B[2]), float(A[0])*float(B[1]) - float(A[1])*float(B[0])\n",
+        "      return resultado\n",
+        "    except ValueError:\n",
+        "      return \"Debe ingresar solo números.\""
+      ],
+      "metadata": {
+        "id": "KKhVQvDPHPIZ"
+      },
+      "execution_count": 130,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "v6 = input(\"Ingrese el vector 1 separado por espacios: \").split()\n",
+        "v7 = input(\"Ingrese el vector 2 separado por espacios: \").split()\n",
+        "operacion = input(\"Ingrese la operación que desea realizar (suma, p.punto, p.cruz): \")\n",
+        "if operacion == \"suma\":\n",
+        "    print (sumar_vectores(v6, v7))\n",
+        "elif operacion == \"p.punto\":\n",
+        "    print (procudto_punto(v6, v7))\n",
+        "elif operacion == \"p.cruz\":\n",
+        "    print (producto_cruz(v6, v7))"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "1IOQUakK6OTe",
+        "outputId": "8b4a720d-8399-4f8d-f325-a10dd9f5bf55"
+      },
+      "execution_count": 131,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Ingrese el vector 1 separado por espacios: 1 2 3\n",
+            "Ingrese el vector 2 separado por espacios: 3 2 1\n",
+            "Ingrese la operación que desea realizar (suma, p.punto, p.cruz): p.cruz\n",
+            "(-4.0, 8.0, -4.0)\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "len(v7)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "DkIdP9o2XEdk",
+        "outputId": "032d03e9-2710-40b0-b67e-e840f99e6f05"
+      },
+      "execution_count": 113,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "2"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 113
+        }
+      ]
+    }
+  ]
+}
