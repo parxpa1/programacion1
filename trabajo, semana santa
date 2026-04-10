@@ -4,7 +4,7 @@
   "metadata": {
     "colab": {
       "provenance": [],
-      "authorship_tag": "ABX9TyMmZFtOqtbSdZwA7xridZQe",
+      "authorship_tag": "ABX9TyOBbLZMiZN9/5yKJhYDDT0x",
       "include_colab_link": true
     },
     "kernelspec": {
@@ -108,33 +108,61 @@
     {
       "cell_type": "code",
       "source": [
+        "def producto_Hadamard(A, B):\n",
+        "  filas = len(A)\n",
+        "  columnas = len(A[0])\n",
+        "  if filas != len(B) or columnas != len(B[0]):\n",
+        "    return \"Error: Las matrices deben tener las mismas dimensiones para sumarse.\"\n",
+        "  else:\n",
+        "    try:\n",
+        "      resultado = []\n",
+        "      for i in range(filas):\n",
+        "        fila = []\n",
+        "        for j in range(columnas):\n",
+        "          fila.append(float(A[i][j]) * float(B[i][j]))\n",
+        "          resultado.append(fila)\n",
+        "      return resultado\n",
+        "    except ValueError:\n",
+        "      return \"Debe ingresar solo números.\""
+      ],
+      "metadata": {
+        "id": "Q2jgg3fncyQB"
+      },
+      "execution_count": 132,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
         "v6 = input(\"Ingrese el vector 1 separado por espacios: \").split()\n",
         "v7 = input(\"Ingrese el vector 2 separado por espacios: \").split()\n",
-        "operacion = input(\"Ingrese la operación que desea realizar (suma, p.punto, p.cruz): \")\n",
+        "operacion = input(\"Ingrese la operación que desea realizar (suma, p.punto, p.cruz, p.Hadamard): \")\n",
         "if operacion == \"suma\":\n",
         "    print (sumar_vectores(v6, v7))\n",
         "elif operacion == \"p.punto\":\n",
         "    print (procudto_punto(v6, v7))\n",
         "elif operacion == \"p.cruz\":\n",
-        "    print (producto_cruz(v6, v7))"
+        "    print (producto_cruz(v6, v7))\n",
+        "elif operacion == \"p.Hadamard\":\n",
+        "    print (producto_Hadamard(v6, v7))"
       ],
       "metadata": {
         "colab": {
           "base_uri": "https://localhost:8080/"
         },
         "id": "1IOQUakK6OTe",
-        "outputId": "8b4a720d-8399-4f8d-f325-a10dd9f5bf55"
+        "outputId": "07a3c82b-46c6-479b-d201-e072b9be12ef"
       },
-      "execution_count": 131,
+      "execution_count": 134,
       "outputs": [
         {
           "output_type": "stream",
           "name": "stdout",
           "text": [
-            "Ingrese el vector 1 separado por espacios: 1 2 3\n",
-            "Ingrese el vector 2 separado por espacios: 3 2 1\n",
-            "Ingrese la operación que desea realizar (suma, p.punto, p.cruz): p.cruz\n",
-            "(-4.0, 8.0, -4.0)\n"
+            "Ingrese el vector 1 separado por espacios: 1 2 3 \n",
+            "Ingrese el vector 2 separado por espacios: 4 5 6\n",
+            "Ingrese la operación que desea realizar (suma, p.punto, p.cruz, p.Hadamard): p.Hadamard\n",
+            "[[4.0], [10.0], [18.0]]\n"
           ]
         }
       ]
